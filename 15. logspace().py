@@ -19,3 +19,7 @@ print(arr) #Log 10 to the power 10 to 1000
 import numpy as np
 arr=np.logspace(2,3,num=5,base=2)
 print(arr) #log 2 to the power of 2 to 3
+
+import numpy as np
+arr=np.logspace(2,3,num=5,base=2,endpoint=False)
+print(arr) #log 2 to the power of 2 to 3
