@@ -1,128 +1,106 @@
-#List VS Array
 '''
--->List and array both are ordered collection and they both are mutable in nature.
--->List is used to hold heterogenous data where array is used to store homogeneous data items.
+🧮 List vs NumPy Array
+✅ Similarities
+    . Both are ordered collections.
+    . Both are mutable (can be changed after creation).
+
+🔁 Key Differences
++-----------------------+----------------------------------+----------------------------------+
+| Feature               | Python List                      | NumPy Array                      |
++-----------------------+----------------------------------+----------------------------------+
+| Data Type             | Can store heterogeneous data     | Stores homogeneous data only     |
++-----------------------+----------------------------------+----------------------------------+
+| Performance           | Slower                           | Much faster (optimized in C)     |
++-----------------------+----------------------------------+----------------------------------+
+| Memory Efficiency     | Consumes more memory             | Consumes less memory             |
++-----------------------+----------------------------------+----------------------------------+
+| Vectorized Operations | ❌ Not supported                  | ✅ Supported                      |
++-----------------------+----------------------------------+----------------------------------+
+
+
+📏 Memory Comparison Example
+    import sys
+    import numpy as np
+
+# Python list
+    l = [i for i in range(100)]
+    print('Size of list:', sys.getsizeof(l))  # Includes object overhead
+
+# NumPy array
+    n = np.arange(100)
+    print('Size of NumPy array:', sys.getsizeof(n))  # Much smaller
+
+➕ Vector Operations
+❌ Not possible with lists:
+    l = [10, 20, 30, 40, 50]
+    data = l + 3  # ❌ TypeError: can only concatenate list (not "int") to list
+
+✅ Possible with NumPy arrays:
+    import numpy as np
+    n = np.arange(10)
+    data = n + 3
+    print(data)  # [3 4 5 6 7 8 9 10 11 12]
+
+🧱 Creating NumPy Arrays
+🔹 From List (1D)
+    l = [10, 20, 30, 40, 50]
+    print(type(l))  # <class 'list'>
+
+    arr = np.array(l)
+    print(arr)      # [10 20 30 40 50]
+    print(type(arr))  # <class 'numpy.ndarray'>
+
+🔍 Checking Array Properties
+    print(arr.ndim)   # 1 → Dimension
+    print(arr.shape)  # (5,) → Shape (5 elements)
+    print(arr.size)   # 5 → Total elements
+    print(arr.dtype)  # int64 or int32 depending on system
+
+🔹 Creating a 2D Array (Nested List)
+    l = [[10, 20, 30], [40, "Ram", 60], [70, 80, 90]]
+    arr = np.array(l)
+    print(arr)
+    Output:
+        [['10' '20' '30']
+        ['40' 'Ram' '60']
+        ['70' '80' '90']]
+
+Properties:
+    print(arr.ndim)   # 2
+    print(arr.shape)  # (3, 3)
+    print(arr.size)   # 9
+    print(arr.dtype)  # <U21 (due to mixed types, upcasted to string)
+
+🔹 Creating a 3D Array
+        l = [
+            [[10, 20, 30], [40, 50, 60], [70, 80, 90]],
+            [[5, 15, 25], [35, 45, 55], [65, 75, 85]]
+        ]
+
+        arr = np.array(l)
+        print(arr)
+
+Accessing elements:
+        print(arr[1][2][2])  # Output: 85
+        Array properties:
+            print(arr.ndim)   # 3
+            print(arr.shape)  # (2, 3, 3)
+            print(arr.size)   # 18
+            print(arr.dtype)  # int64
+
+⚙️ Upcasting in NumPy
+Upcasting is the automatic promotion of data types to avoid data loss when combining different types.
+🔸 Example 1
+        l = [10, 20, 30, 40.5, 50.6]
+        arr = np.array(l)
+        print(arr)        # Output: [10.  20.  30.  40.5 50.6]
+        print(arr.dtype)  # float64
+
+🔸 Example 2
+        int_arr = np.array([1, 2, 3])        # int64
+        float_arr = np.array([1.1, 2.2, 3.3])  # float64
+
+        result = int_arr + float_arr
+        print(result)        # [2.1 4.2 6.3]
+        print(result.dtype)  # float64
 '''
-
-'''
--->Array consume less space as compared to list.
-'''
-import sys
-l=[i for i in range(100)]
-print('size of l is',sys.getsizeof(l))
-
-import numpy as np
-import sys
-n=np.arange(100)
-print('size of n is',sys.getsizeof(n))
-
-'''
--->By using array, we can perform vector operation, but we can't perform vector opertaion by using list.
-'''
-#vector operations using numpy array(possible) and python list(not possible)
-l=[10,20,30,40,50]
-data=l+3 #TypeError: can only concatenate list (not "int") to list
-
-#vector operation using numpy array
-import numpy as np
-n=np.arange(10)
-data=n+3
-print(data)
-
-'''
-1. Creation of ndarray using array()
-2. Check different properties of ndarray
-3. Upcating at the time of array creation
-'''
-
-####Creation of 1darray by using array()
-#Creation of 1D array() by list, tuple
-l=[10,20,30,40,50]
-print(l)
-print(type(l))
-
-'''
-Output:
-[10, 20, 30, 40]
-<class 'list'>'''
-
-#Converting list to 1D array()
-import numpy as np
-arr=np.array(l)
-print(arr)
-print(type(arr))
-
-'''
-Output:
-[10 20 30 40]
-<class 'numpy.ndarray'>'''
-
-'''Checking different properties of 1drray'''
-import numpy as np
-l=[10,20,30,40,50]
-arr=np.array(l)
-print(arr)
-print(arr.ndim) #To check the dimension
-print(arr.shape)#To check the shape
-print(arr.size) #To check the size
-print(arr.dtype)#To check the data type
-
-#Creation  of 2d array from nested list using array()
-l=[[10,20,30],[40,"Ram",60],[70,80,90]]
-print(l)
-print(type(l))
-
-#Converting nested list to 2D Array
-import numpy as np
-arr=np.array(l)
-print(arr)
-
-#Checking different properties
-print(arr.ndim) #To check the dimension
-print(arr.shape)#To check the shape
-print(arr.size) #To check the size
-print(arr.dtype)#To check the data type
-
-#Creation  of 3d array from nested list using array()
-l=[[[10,20,30],[40,50,60],[70,80,90]],[[5,15,25],[35,45,55],[65,75,85]]]
-print(l)
-print(type(l))
-
-#Converting nested list to 3d array
-import numpy as np
-arr=np.array(l)
-print(arr)
-
-#Checking different properties
-print(arr.ndim) #To check the dimension
-print(arr.shape)#To check the shape
-print(arr.size) #To check the size
-print(arr.dtype)#To check the data type
-print(arr[1][2][2])#To Check the value
-
-#Upcasting
-'''
-In NumPy, upcasting refers to the automatic conversion of data types to a higher or more general type when performing operations between arrays of different types. This ensures that the result can hold all possible values from the operation without data loss.
-'''
-#Example:
-import numpy as np
-l=[10,20,30,40.5,50.6]
-arr=np.array(l)
-print(arr)
-
-#Example:
-import numpy as np
-
-# Integer array
-int_arr = np.array([1, 2, 3])
-
-# Float array
-float_arr = np.array([1.1, 2.2, 3.3])
-
-# Performing an operation
-result = int_arr + float_arr
-
-print(result)  # Output: [2.1 4.2 6.3]
-print(result.dtype)  # Output: float64 (upcasted to float)
-
-

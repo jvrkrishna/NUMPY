@@ -1,35 +1,63 @@
-###### ARRAY ######
 '''
-Array is a collection of data which is used to hold same data items(homogenous data items).
-Array Which we will create using Numpy are called n dimensional array here n is like any integer (n=1, n=2, n=3 ....)
-Array generally divided into 3 categories 1D, 2D and nD array.
+An array is a collection of homogeneous data items (i.e., all elements must be of the same type). In NumPy, arrays are powerful, multi-dimensional data structures used for storing and manipulating numerical data efficiently.
 
+✅ Key Points
+    NumPy arrays are known as n-dimensional arrays (n can be 1, 2, 3, ...).
+
+Arrays are categorized as:
 1D Array
-10 | 20 | 30 ---- Single row with multi columns.
-print(arr[0])
-
 2D Array
-10 | 20 | 30
-40 | 50 | 60
-70 | 80 | 90 ---- Collection of 1D Arrays
-print(arr[0][2])
-print(arr[1][2]) ---- 1st row 2nd column ----60
+3D (or nD) Array
 
-3D Array
-Collection of 2D Arrays
+📌 1D Array (One-dimensional)
+Represents a single row (or column) of elements.
+    import numpy as np
+    arr = np.array([10, 20, 30])
+    print(arr[0])   # Output: 10
 
-10 | 20 | 30
-40 | 50 | 60
-70 | 80 | 90  ------ 2D Array One
+🧾 Visual:
+[10, 20, 30]   ← Single row with multiple elements
 
-11 | 12 | 13
-14 | 15 | 16
-17 | 18 | 19 ------- 2D Array two
+📌 2D Array (Two-dimensional)
+A collection of 1D arrays arranged as rows and columns.
+    arr = np.array([
+        [10, 20, 30],
+        [40, 50, 60],
+        [70, 80, 90]
+    ])
 
-15 | 25 | 35
-45 | 55 | 65
-75 | 85 | 95 ------- 2D Array three
+    print(arr[0][2])  # Output: 30
+    print(arr[1][2])  # Output: 60  (2nd row, 3rd column)
+    
+🧾 Visual:
+    [[10, 20, 30],
+    [40, 50, 60],
+    [70, 80, 90]]
+    
+📌 3D Array (Three-dimensional)
+A collection of 2D arrays, essentially forming a cube-like structure.
+    arr = np.array([
+        [
+            [10, 20, 30],
+            [40, 50, 60],
+            [70, 80, 90]
+        ],
+        [
+            [11, 12, 13],
+            [14, 15, 16],
+            [17, 18, 19]
+        ],
+        [
+            [15, 25, 35],
+            [45, 55, 65],
+            [75, 85, 95]
+        ]
+    ])
 
-
-arr[2] [2] [2] --- [no.of 2D Arrays] [no.of rows] [no.of columns] 
+    print(arr[2][2][2])  # Output: 95
+    
+🧾 Breakdown of arr[2][2][2]:
+    arr[2] → selects the 3rd 2D array
+    arr[2][2] → selects the 3rd row in that 2D array
+    arr[2][2][2] → selects the 3rd column in that row → 95
 '''
