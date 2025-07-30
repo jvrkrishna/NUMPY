@@ -1,40 +1,54 @@
-#Creation of ndarray using arange()
+'''📏 Creation of ndarray using np.arange()
 import numpy as np
-arr=np.arange(10)
-print(arr)
-print(arr.shape)
-print(arr.dtype)
-print(arr.size)
-print(arr.ndim)
+arr = np.arange(10)
+
+print(arr)          # [0 1 2 3 4 5 6 7 8 9]
+print(arr.shape)    # (10,)
+print(arr.dtype)    # int64
+print(arr.size)     # 10
+print(arr.ndim)     # 1
 
 print(help(np.arange))
 
-#Creation of ndarray using linspace()
+np.arange([start, ]stop, [step, ], dtype=None)
+Creates an array with regularly incrementing values.
+
+📐 Creation of ndarray using np.linspace()
 import numpy as np
 print(help(np.linspace))
-#linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0, *, device=None)
 
-#print the values between 0 to 1
-import numpy as np
-arr=np.linspace(0,1) #Here it prints 50 values which is 50 default
-print(arr) 
+Signature:
+linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None)
+Returns evenly spaced numbers over a specified interval.
 
-#print the values between 0 to 1 with number of values 5
+🔹 Example 1: Values between 0 and 1 (default 50 values)
 import numpy as np
-arr=np.linspace(0,1,num=5)
+
+arr = np.linspace(0, 1)
 print(arr)
 
-#print the values between 0 to 1 with dtype
+🔹 Example 2: Values between 0 and 1 with num=5
 import numpy as np
-arr=np.linspace(0,1,num=5,dtype="int")
-print(arr)
 
-#print the values between 100 to 200 with dtype and endpoint
-import numpy as np
-arr=np.linspace(100,200,num=5,dtype="int",endpoint=False)
-print(arr)
+arr = np.linspace(0, 1, num=5)
+print(arr)  # [0.   0.25 0.5  0.75 1.  ]
 
-#print the values between 100 to 200 and know the gap value by retstep
+🔹 Example 3: Values with dtype=int
 import numpy as np
-arr=np.linspace(100,200,num=10,retstep=True)
-print(arr)
+
+arr = np.linspace(0, 1, num=5, dtype="int")
+print(arr)  # [0 0 0 0 1]
+⚠️ Note: Floating-point values are truncated to integers.
+
+🔹 Example 4: Values between 100 and 200 (5 steps, no endpoint, integer dtype)
+import numpy as np
+
+arr = np.linspace(100, 200, num=5, endpoint=False, dtype="int")
+print(arr)  # [100 120 140 160 180]
+
+🔹 Example 5: Get values and the step size using retstep=True
+import numpy as np
+
+arr, step = np.linspace(100, 200, num=10, retstep=True)
+print(arr)   # Array of 10 values
+print(step)  # Step size (approx. 11.11)'''
