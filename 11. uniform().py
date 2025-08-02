@@ -1,5 +1,5 @@
 #Uniform() functions
-''' Exactly same as rand() but here we can sutomize our low and high values.'''
+''' Exactly same as rand() but here we can cutomize our low and high values.'''
 
 import numpy as np
 print(help(np.random.uniform))
